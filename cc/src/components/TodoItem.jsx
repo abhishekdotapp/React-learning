@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTodo } from '../context/TodoContext';
 
-function TodoItem({ todo }) {
+const TodoItem = ({ todo }) => {
 
     const { isTodoEditable, setIsTodoEditable } = useState(false)
     const { todoMsg, setTodoMsg } = useState(todo.todo)
@@ -31,7 +31,7 @@ return (
             type="text"
             className={`border outline-none w-full bg-transparent rounded-lg ${isTodoEditable ? "border-black/10 px-2" : "border-transparent"
                 } ${todo.completed ? "line-through" : ""}`}
-            value={todoMsg}       
+            value={todo.todo}       
             onChange={(e) => setTodoMsg(e.target.value)}
             readOnly={!isTodoEditable}
         />
@@ -42,7 +42,7 @@ return (
                 if (todo.completed) return;
 
                 if (isTodoEditable) {
-                    editTodo();
+                    editTodo()
                 } else setIsTodoEditable((prev) => !prev);
             }}
             disabled={todo.completed}
