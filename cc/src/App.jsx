@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { TodoProvider } from './context/TodoContextcomplete but need to fix size'
+import { TodoProvider } from './context/TodoContext'
 import './App.css'
 import TodoForm from './components/TodoForm'
 import TodoItem from './components/TodoItem'
@@ -8,7 +8,7 @@ export default function App() {
     const [todos, setTodos] = useState([])
 
     const addTodo = (todo) => {
-        setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev])
+        setTodos((prev) => [...prev,{id:Date.now(), ...todo}])
     }
 
     const updateTodo = (id, todo) => {
